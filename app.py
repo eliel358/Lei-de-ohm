@@ -6,7 +6,6 @@ window_width = '1000'
 window.geometry(f'{window_width}x{window_height}+250+250')
 window.title('Lei de Ohm')
 
-
 entry = ctk.CTkEntry(window,width=100,height=10)
 entry.place(x=700/4,y=1000/2)
 
@@ -35,15 +34,6 @@ label_4 = ctk.CTkLabel(window,font=('Arial',20),text='')
 label_4.place(x=1000/2,y=250,anchor='center')
 
 def calcular_potencia():
-    if entry.get() == '':
-        entry.insert(0,'0')
-    if entry_1.get() == '':
-        entry_1.insert(0,'0')
-    if entry_2.get() == '':
-        entry_2.insert(0,'0')
-    if entry_3.get() == '':
-        entry_3.insert(0,'0')
-
     p = float(entry.get())
     v = float(entry_1.get())
     i = float(entry_2.get())
@@ -54,25 +44,14 @@ def calcular_potencia():
         return p
     elif v and i:
         p = v*i
-        print('2')
         return p
     elif r and i:
         p = r*(i**2)
-        print('3')
         return p
     else:
         return p
     
 def calcular_tensao():
-    if entry.get() == '':
-        entry.insert(0,'0')
-    if entry_1.get() == '':
-        entry_1.insert(0,'0')
-    if entry_2.get() == '':
-        entry_2.insert(0,'0')
-    if entry_3.get() == '':
-        entry_3.insert(0,'0')
-
     p = float(entry.get())
     v = float(entry_1.get())
     i = float(entry_2.get())
@@ -91,15 +70,6 @@ def calcular_tensao():
         return v
     
 def calcular_resistencia():
-    if entry.get() == '':
-        entry.insert(0,'0')
-    if entry_1.get() == '':
-        entry_1.insert(0,'0')
-    if entry_2.get() == '':
-        entry_2.insert(0,'0')
-    if entry_3.get() == '':
-        entry_3.insert(0,'0')
-
     p = float(entry.get())
     v = float(entry_1.get())
     i = float(entry_2.get())
@@ -118,15 +88,6 @@ def calcular_resistencia():
         return r
     
 def calcular_corrente():
-    if entry.get() == '':
-        entry.insert(0,'0')
-    if entry_1.get() == '':
-        entry_1.insert(0,'0')
-    if entry_2.get() == '':
-        entry_2.insert(0,'0')
-    if entry_3.get() == '':
-        entry_3.insert(0,'0')
-
     p = float(entry.get())
     v = float(entry_1.get())
     i = float(entry_2.get())
@@ -145,9 +106,16 @@ def calcular_corrente():
         return i
     
 def calcular():
+    if entry.get() == '':
+        entry.insert(0,'0')
+    if entry_1.get() == '':
+        entry_1.insert(0,'0')
+    if entry_2.get() == '':
+        entry_2.insert(0,'0')
+    if entry_3.get() == '':
+        entry_3.insert(0,'0')
     label_4.configure( text = 'Potencia: '+str(calcular_potencia()) +'\nTensão: '+str(calcular_tensao())+'\nResistencia: '+str(calcular_resistencia())+'\nCorrente: '+str(calcular_corrente()))
 bt_calcular = ctk.CTkButton(window,width=200,height=50,font=('Arial',35),text_color='black',text='Calcular',command=calcular)
 bt_calcular.place(x=1000/2,y=650,anchor='center')
-
 
 window.mainloop()
